@@ -112,14 +112,49 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+//Article component grab
+const articles = document.querySelector('.articles');
 
-class ArtComponent {
-  constructor(panel){
-  this.panel = panel;
-  this.expandButton = panel.querySelector('');
+data.forEach(data => {
+  articles.appendChild(artComponent(data));
+});
 
-  }
-  extraMethod(){
-    this.panel;
-  }
+//Component creation
+function artComponent(data){
+  const artBorder = document.createElement('div');
+  const title = document.createElement('h1');
+  const date = document.createElement('p');
+  const para1 = document.createElement('p');
+  const para2 = document.createElement('p');
+  const para3 = document.createElement('p');
+  const button = document.createElement('span');
+
+  artBorder.appendChild(title);
+  artBorder.appendChild(date);
+  artBorder.appendChild(para1);
+  artBorder.appendChild(para2);
+  artBorder.appendChild(para3);
+  artBorder.appendChild(button);
+
+  artBorder.classList.add('article');
+  date.classList.add('date');
+  button.classList.add('expandButton');
+
+  title.textContent = data.title;
+  date.textContent = data.date;
+  para1.textContent = data.firstParagraph;
+  para2.textContent = data.secondParagraph;
+  para3.textContent = data.thirdParagraph;
+  button.textContent = "open";
+
+  button.addEventListener('click', () => {
+    artBorder.classList.toggle('article-open');
+    if (button.textContent = "open"){
+      button.textContent = "close";
+    }else if (button.textContent = "close"){
+      button.textContent = "open";
+    }
+  })
+  return artComponent;
 }
+
